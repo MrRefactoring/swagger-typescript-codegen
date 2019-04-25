@@ -78,8 +78,8 @@ function getAllOfProperties(
         return filter(property.properties);
       }
 
-      const refSegments = ref.$ref.split("/");
-      const name = refSegments[refSegments.length - 1];
+      const refSegments = /[^/]*$/.exec(ref.$ref) || [];
+      const name = refSegments[0];
 
       return flatten(
         filter(
